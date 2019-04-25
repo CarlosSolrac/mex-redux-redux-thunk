@@ -4,23 +4,24 @@ import { Action } from './actions'
 
 // States' definition
 export interface AccessToken {
-  isFetching: boolean
-  accessToken?: string
+    isFetching: boolean
+    accessToken?: string
 }
 
 export interface State {
-  accessToken: AccessToken
+    accessToken: AccessToken
 }
 
 const accessToken = (state: AccessToken = { isFetching: false }, action: Action): AccessToken => {
-  switch (action.type) {
-  case 'SET':
-    return { ...state, accessToken: action.accessToken }
-  case 'SET_FETCHING':
-    return { ...state, isFetching: action.isFetching }
-  }
-  return state
+    switch (action.type) {
+        case 'SET':
+            return { ...state, accessToken: action.accessToken }
+        case 'SET_FETCHING':
+            return { ...state, isFetching: action.isFetching }
+        default:
+            return state
+    }
 }
 export default combineReducers<State>({
-  accessToken
+    accessToken
 })
